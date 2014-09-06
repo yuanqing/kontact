@@ -1,0 +1,27 @@
+{
+  "name": "yuanqing/kontact",
+  "description": "A pluggable contact form in PHP and vanilla JavaScript/AJAX.",
+  "keywords": [
+    "ajax",
+    "contact",
+    "email",
+    "form",
+    "mail"
+  ],
+  "homepage": "https://github.com/yuanqing/kontact",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Lim Yuan Qing",
+      "email": "hello@yuanqing.sg"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "yuanqing\\Kontact\\": "php/"
+    }
+  },
+  "require": {
+    "php": ">=5.3"
+  }
+}

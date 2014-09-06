@@ -1,0 +1,32 @@
+{
+  "name": "kontact",
+  "version": "0.1.0",
+  "description": "A pluggable contact form in PHP and vanilla JavaScript/AJAX.",
+  "keywords": [
+    "ajax",
+    "contact",
+    "email",
+    "form",
+    "mail"
+  ],
+  "author": "Lim Yuan Qing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yuanqing/kontact.git"
+  },
+  "main": "js",
+  "devDependencies": {
+    "browserify": "^5.11.1",
+    "uglify-js": "^2.4.15",
+    "watchify": "^1.0.2"
+  },
+  "dependencies": {
+    "atomic": "git://github.com/toddmotto/atomic",
+    "form-serialize": "^0.3.0"
+  },
+  "scripts": {
+    "dist": "node_modules/.bin/browserify js/index.js -s kontact -o js/dist/kontact.js && node_modules/.bin/uglifyjs js/dist/kontact.js -o js/dist/kontact.min.js",
+    "watch": "node_modules/.bin/watchify js/index.js -s kontact -o js/dist/kontact.js --debug"
+  }
+}
