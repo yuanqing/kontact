@@ -9,12 +9,10 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 
 var paths = {
-  dir: 'js/',
-  src: 'js/kontact.js',
-  distFile: 'kontact.min.js',
+  srcDir: 'js/src/',
+  src: 'js/src/kontact.js',
   test: ['js/test/spec/**/*.spec.js'],
-  karma: __dirname + '/js/test/karma.conf.js',
-  coverage: 'coverage/'
+  karma: __dirname + '/js/test/karma.conf.js'
 };
 
 gulp.task('lint', function() {
@@ -33,8 +31,10 @@ gulp.task('dist', function() {
       standalone: 'kontact'
     }))
     .pipe(uglify())
-    .pipe(rename(paths.distFile))
-    .pipe(gulp.dest(paths.dir));
+    .pipe(rename(function(path) {
+      path.basename += ".min";
+    }))
+    .pipe(gulp.dest(paths.srcDir));
 });
 
 gulp.task('test', ['dist'], function(done) {

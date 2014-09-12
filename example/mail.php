@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errs', 1);
 
-require_once dirname(__DIR__) . '/php/Kontact.php';
+require_once dirname(__DIR__) . '/php/src/Kontact.php';
 
 use yuanqing\Kontact\Kontact;
 

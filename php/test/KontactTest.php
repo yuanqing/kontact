@@ -13,6 +13,7 @@ class KontactTest extends PHPUnit_Framework_TestCase
 {
   public $schema;
   public $cb;
+  public $cb_args;
 
   public function setUp()
   {
