@@ -11,7 +11,7 @@ use yuanqing\Kontact\Kontact;
 
 class KontactTest extends PHPUnit_Framework_TestCase
 {
-  public $kontact;
+  public $schema;
   public $cb;
 
   public function setUp()
@@ -40,9 +40,9 @@ class KontactTest extends PHPUnit_Framework_TestCase
     $post = array(
       'json' => json_encode($data)
     );
-    $this->kontact = new Kontact($this->schema, $this->cb);
+    $kontact = new Kontact($this->schema, $this->cb);
     ob_start();
-    $this->kontact->process($post, null);
+    $kontact->process($post, null);
     $response = json_decode(ob_get_clean(), true);
     $this->assertEquals($expected, $response);
   }
@@ -54,12 +54,16 @@ class KontactTest extends PHPUnit_Framework_TestCase
       'email' => 'foo@bar.com',
       'message' => 'baz'
     );
+    $expected_data = array(
+      'email' => 'foo@bar.com',
+      'message' => 'baz'
+    );
     $expected = array(
       'err' => 0,
-      'data' => $data
+      'data' => $expected_data
     );
     $this->post($data, $expected);
-    $this->assertEquals(array($data), $this->cb_args);
+    $this->assertEquals(array($expected_data), $this->cb_args);
   }
 
   public function testEmptyRequiredField()
@@ -73,7 +77,10 @@ class KontactTest extends PHPUnit_Framework_TestCase
       'err' => array(
         'message' => 'Please enter a message'
       ),
-      'data' => $data
+      'data' => array(
+        'name' => 'foo',
+        'email' => 'foo@bar.com'
+      )
     );
     $this->post($data, $expected);
     $this->assertEquals(array(), $this->cb_args); // `$cb` not called
@@ -107,8 +114,8 @@ class KontactTest extends PHPUnit_Framework_TestCase
       'message' => 'baz'
     );
     $this->cb_args = array();
-    $this->kontact = new Kontact($this->schema, $this->cb);
-    $this->kontact->process($data, 'qux');
+    $kontact = new Kontact($this->schema, $this->cb);
+    $kontact->process($data, 'qux');
     $this->assertEquals(array('Location: qux?err=0&data%5Bname%5D=foo&data%5Bemail%5D=foo%40bar.com&data%5Bmessage%5D=baz'), xdebug_get_headers());
     $this->assertEquals(array($data), $this->cb_args);
   }

@@ -18,7 +18,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "yuanqing\\Kontact\\": "php/src/"
+      "yuanqing\\Kontact\\": "php/"
     }
   },
   "require": {

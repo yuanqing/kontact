@@ -40,12 +40,13 @@ class Kontact {
 
     // check input against the schema, populate `$data`
     foreach ($this->schema as $k => $v) {
-      if (isset($input[$k])) {
-        if (empty($input[$k]) && (!isset($v['optional']) || $v['optional'] !== true)) {
-          $err[$k] = isset($v['err']) ? $v['err'] : sprintf('Please enter a %s', $k);
-        }
+      if (empty($input[$k]) && (!isset($v['optional']) || $v['optional'] !== true)) {
+        $err[$k] = isset($v['err']) ? $v['err'] : sprintf('Please enter a %s', $k);
+      } else {
         // sanitise
-        $data[$k] = htmlspecialchars($input[$k]);
+        if (!empty($input[$k])) {
+          $data[$k] = htmlspecialchars($input[$k]);
+        }
         // validate
         $fn = isset($v['validate']) ? $v['validate'] : null;
         if ($fn !== null && is_callable($fn) && !call_user_func($fn, $input[$k])) {
@@ -61,7 +62,7 @@ class Kontact {
     // send response
     $response = array(
       'err' => empty($err) ? 0 : $err,
-      'data' => empty($data) ? 0 : $data
+      'data' => $data
     );
     if ($is_json) {
       header('Content-Type: application/json');

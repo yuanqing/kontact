@@ -11,12 +11,7 @@
     <div><label for="email">Message</label><textarea name="message" id="message"><?php echo @$_GET['data']['message']; ?></textarea></div>
     <div><input type="submit" value="Send" /></div>
   </form>
-  <script src="../js/dist/kontact.min.js"></script>
-  <script>
-    var form = document.querySelectorAll('.kontact')[0];
-    kontact(form, function(err, data) {
-      console.log(err, data);
-    });
-  </script>
+  <script src="../js/kontact.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
