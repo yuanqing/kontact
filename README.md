@@ -4,7 +4,7 @@
 
 ## Quick start
 
-1. Clone this repo into a location accessible via [`localhost`](http://localhost/kontact/example/). For example:
+1. Clone this repo into a location accessible via [`localhost`](http://localhost/). For example:
 
   ```bash
   $ cd ~/Sites
@@ -12,9 +12,9 @@
   $ cd kontact/example
   ```
 
-  (Otherwise, upload this repo onto any web server with PHP.)
+  (Otherwise, simply upload this repo onto any web server with PHP.)
 
-2. Open the [`example/index.php`](http://localhost/kontact/example/index.php) file on your web browser.
+2. Open [`example/index.php`](http://localhost/kontact/example/index.php) on a web browser, and have a go at submitting the contact form.
 
 ## Usage
 
@@ -41,7 +41,7 @@ This is the HTML for the contact form itself.
 
 2. Note that the `action` attribute of the `form` is `mail.php`.
 
-### [example/script.js](https://github.com/yuanqing/kontact/blob/master/example/script.js)
+### &bull; [example/script.js](https://github.com/yuanqing/kontact/blob/master/example/script.js)
 
 This is the JavaScript that sends the user input via AJAX to `mail.php`.
 
@@ -66,7 +66,7 @@ Listens to the `submit` event on the given `form`, and sends the user input via 
   - `0` &mdash; No error in user input.
   - `array` &mdash; There was an error in the user input. Each element in the array corresponds to a form field where there had been an error.
 
-### [example/mail.php](https://github.com/yuanqing/kontact/blob/master/example/mail.php)
+### &bull; [example/mail.php](https://github.com/yuanqing/kontact/blob/master/example/mail.php)
 
 This is the PHP script that processes the submitted form, and returns a response. It requires the file `php/src/Kontact.php`.
 
