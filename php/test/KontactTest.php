@@ -1,6 +1,6 @@
 <?php
 /**
- * Kontact.php
+ * Kontact.php - An extensible contact form in PHP and vanilla JavaScript/AJAX.
  *
  * @author Lim Yuan Qing <hello@yuanqing.sg>
  * @license MIT
