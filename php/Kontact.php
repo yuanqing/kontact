@@ -9,8 +9,8 @@
 
 namespace yuanqing\Kontact;
 
-class Kontact {
-
+class Kontact
+{
   private $schema;
   private $cb;
   private $header;

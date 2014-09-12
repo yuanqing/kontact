@@ -47,6 +47,9 @@ class KontactTest extends PHPUnit_Framework_TestCase
     $this->assertEquals($expected, $response);
   }
 
+  /**
+   * @runInSeparateProcess
+   */
   public function testEmptyOptionalField()
   {
     $data = array(
@@ -66,6 +69,9 @@ class KontactTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(array($expected_data), $this->cb_args);
   }
 
+  /**
+   * @runInSeparateProcess
+   */
   public function testEmptyRequiredField()
   {
     $data = array(
@@ -86,6 +92,9 @@ class KontactTest extends PHPUnit_Framework_TestCase
     $this->assertEquals(array(), $this->cb_args); // `$cb` not called
   }
 
+  /**
+   * @runInSeparateProcess
+   */
   public function testInvalidField()
   {
     $data = array(
