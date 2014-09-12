@@ -30,12 +30,13 @@ class KontactTest extends PHPUnit_Framework_TestCase
       ),
       'message' => array()
     );
-    $this->cb = function() {
-      $this->cb_args = func_get_args();
+    $context = $this;
+    $this->cb = function() use ($context) {
+      $context->cb_args = func_get_args();
     };
   }
 
-  public function post($data, $expected)
+  public function kontactPost($data, $expected)
   {
     $this->cb_args = array();
     $post = array(
@@ -66,7 +67,7 @@ class KontactTest extends PHPUnit_Framework_TestCase
       'err' => 0,
       'data' => $expected_data
     );
-    $this->post($data, $expected);
+    $this->kontactPost($data, $expected);
     $this->assertEquals(array($expected_data), $this->cb_args);
   }
 
@@ -89,7 +90,7 @@ class KontactTest extends PHPUnit_Framework_TestCase
         'email' => 'foo@bar.com'
       )
     );
-    $this->post($data, $expected);
+    $this->kontactPost($data, $expected);
     $this->assertEquals(array(), $this->cb_args); // `$cb` not called
   }
 
@@ -109,7 +110,7 @@ class KontactTest extends PHPUnit_Framework_TestCase
       ),
       'data' => $data
     );
-    $this->post($data, $expected);
+    $this->kontactPost($data, $expected);
     $this->assertEquals(array(), $this->cb_args); // `$cb` not called
   }
 
