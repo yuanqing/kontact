@@ -115,6 +115,20 @@ Constructs a new `Kontact` instance.
 
 Validates the user `$input`. The user is redirected to `$origin` if the form was submitted with JavaScript disabled.
 
+## Installation
+
+Install via [npm](https://www.npmjs.org/package/kontact):
+
+```bash
+$ npm i --save kontact
+```
+
+Or via [composer](https://packagist.org/packages/yuanqing/kontact):
+
+```bash
+$ composer require yuanqing/kontact
+```
+
 ## License
 
 [MIT license](https://github.com/yuanqing/kontact/blob/master/LICENSE)
