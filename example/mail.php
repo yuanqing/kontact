@@ -1,7 +1,7 @@
 <?php
 
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errs', 1);
 
 require_once dirname(__DIR__) . '/php/Kontact.php';
 
@@ -21,17 +21,8 @@ $k = new Kontact(
     ),
     'message' => array()
   ),
-  function($err, $data) {
-    $response = array(
-      'err' => $err,
-      'data' => $data
-    );
-    if (isset($_POST['json'])) {
-      echo json_encode($response);
-    } else {
-      header('Location: example.php?' . http_build_query($response));
-      exit();
-    }
+  function($data) {
+    // do stuff with $data
   }
 );
-$k->process($_POST);
+$k->process($_POST, 'example.php');

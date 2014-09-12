@@ -1,5 +1,13 @@
 .DS_Store
+
+# js
 coverage/
 node_modules/
 npm-debug.log
+
+# php
+composer.lock
+composer.phar
+phpunit.xml
+report/
 vendor/

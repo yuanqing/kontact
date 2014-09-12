@@ -5,14 +5,13 @@ var serialize = require('form-serialize');
 
 var kontact = function(form, cb) {
 
-  var url = form.getAttribute('action');
-
+  var action = form.getAttribute('action');
   var fn = function(e) {
     e.preventDefault();
-    atomic.post(url, 'json=' + JSON.stringify(serialize(form, true))).success(function(data) {
+    atomic.post(action, 'json=' + JSON.stringify(serialize(form, true))).success(function(data) {
       cb(data.err, data.data);
     }).error(function() {
-      cb(1);
+      cb(1, null);
     });
   };
 

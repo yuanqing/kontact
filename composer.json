@@ -18,10 +18,14 @@
   ],
   "autoload": {
     "psr-4": {
-      "yuanqing\\Kontact\\": "php/"
+      "yuanqing\\Kontact\\": "php/src/"
     }
   },
   "require": {
     "php": ">=5.3"
+  },
+  "scripts": {
+    "test": "phpunit --stderr ./php",
+    "cover": "phpunit --coverage-html ./coverage --stderr ./php"
   }
 }
