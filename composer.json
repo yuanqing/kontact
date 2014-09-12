@@ -27,5 +27,8 @@
   "scripts": {
     "test": "phpunit --stderr ./php",
     "cover": "phpunit --coverage-html ./coverage --stderr ./php"
+  },
+  "require-dev": {
+    "satooshi/php-coveralls": "dev-master"
   }
 }
