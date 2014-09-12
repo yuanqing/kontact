@@ -1,6 +1,6 @@
 {
   "name": "yuanqing/kontact",
-  "description": "A pluggable contact form in PHP and vanilla JavaScript/AJAX.",
+  "description": "An extensible contact form in PHP and vanilla JavaScript/AJAX.",
   "keywords": [
     "ajax",
     "contact",
@@ -18,7 +18,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "yuanqing\\Kontact\\": "php/"
+      "yuanqing\\Kontact\\": "php/src/"
     }
   },
   "require": {

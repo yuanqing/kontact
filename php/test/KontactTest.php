@@ -47,6 +47,7 @@ class KontactTest extends PHPUnit_Framework_TestCase
     $kontact->process($post, null);
     $response = json_decode(ob_get_clean(), true);
     $this->assertEquals($expected, $response);
+    $this->assertEquals(array_values($expected), $this->cb_args);
   }
 
   /**
@@ -68,7 +69,6 @@ class KontactTest extends PHPUnit_Framework_TestCase
       'data' => $expected_data
     );
     $this->kontactPost($data, $expected);
-    $this->assertEquals(array($expected_data), $this->cb_args);
   }
 
   /**
@@ -91,7 +91,6 @@ class KontactTest extends PHPUnit_Framework_TestCase
       )
     );
     $this->kontactPost($data, $expected);
-    $this->assertEquals(array(), $this->cb_args); // `$cb` not called
   }
 
   /**
@@ -111,7 +110,6 @@ class KontactTest extends PHPUnit_Framework_TestCase
       'data' => $data
     );
     $this->kontactPost($data, $expected);
-    $this->assertEquals(array(), $this->cb_args); // `$cb` not called
   }
 
   /**
@@ -128,7 +126,7 @@ class KontactTest extends PHPUnit_Framework_TestCase
     $kontact = new Kontact($this->schema, $this->cb);
     $kontact->process($data, 'qux');
     $this->assertEquals(array('Location: qux?err=0&data%5Bname%5D=foo&data%5Bemail%5D=foo%40bar.com&data%5Bmessage%5D=baz'), xdebug_get_headers());
-    $this->assertEquals(array($data), $this->cb_args);
+    $this->assertEquals(array(0, $data), $this->cb_args);
   }
 
 }

@@ -49,19 +49,18 @@ class Kontact
         }
         // validate
         $fn = isset($v['validate']) ? $v['validate'] : null;
-        if ($fn !== null && is_callable($fn) && !call_user_func($fn, $input[$k])) {
+        if ($fn !== null && is_callable($fn) && call_user_func($fn, $input[$k]) === false) {
           $err[$k] = isset($v['err']) ? $v['err'] : sprintf('Please enter a valid %s', $k);
         }
       }
     }
 
-    if (empty($err)) {
-      call_user_func($this->cb, $data);
-    }
+    $err = empty($err) ? 0 : $err;
+    call_user_func($this->cb, $err, $data);
 
     // send response
     $response = array(
-      'err' => empty($err) ? 0 : $err,
+      'err' => $err,
       'data' => $data
     );
     if ($is_json) {

@@ -1,7 +1,7 @@
 {
   "name": "kontact",
-  "version": "0.1.1",
-  "description": "A pluggable contact form in PHP and vanilla JavaScript/AJAX.",
+  "version": "0.2.0",
+  "description": "An extensible contact form in PHP and vanilla JavaScript/AJAX.",
   "keywords": [
     "ajax",
     "contact",
