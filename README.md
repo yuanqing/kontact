@@ -12,13 +12,13 @@
   $ cd kontact/example
   ```
 
-  (Otherwise, simply upload this repo onto any web server with PHP.)
+  Or simply upload this repo onto a web server that can execute PHP.
 
-2. Open [`example/index.php`](http://localhost/kontact/example/index.php) on a web browser, and have a go at submitting the contact form.
+2. Open [`example/index.php`](https://github.com/yuanqing/kontact/blob/master/example/index.php) on a web browser, and have a go at submitting the contact form.
 
 ## Usage
 
-Our contact form is composed of the following files:
+Our contact form is composed of the following:
 
 ### &bull; [example/index.php](https://github.com/yuanqing/kontact/blob/master/example/index.php)
 
@@ -29,7 +29,7 @@ This is the HTML for the contact form itself.
   <form action="mail.php" method="post" class="kontact">
     <div><label for="name">Name</label><input type="text" name="name" id="name" value="<?php echo @$_GET['data']['name']; ?>" /></div>
     <div><label for="email">Email</label><input type="text" name="email" id="email" value="<?php echo @$_GET['data']['email']; ?>" /></div>
-    <div><label for="email">Message</label><textarea name="message" id="message"><?php echo @$_GET['data']['message']; ?></textarea></div>
+    <div><label for="message">Message</label><textarea name="message" id="message"><?php echo @$_GET['data']['message']; ?></textarea></div>
     <div><input type="submit" value="Send" /></div>
   </form>
   <script src="../js/src/kontact.min.js"></script>
@@ -37,9 +37,9 @@ This is the HTML for the contact form itself.
 </body>
 ```
 
-1. Place the `js/src/kontact.min.js` and `script.js` JavaScript just before the closing `body` tag.
+1. The `js/src/kontact.min.js` and `script.js` JavaScript files are to be placed just before the closing `body` tag.
 
-2. Note that the `action` attribute of the `form` is `mail.php`.
+2. The `action` attribute of the `form` is `mail.php`.
 
 ### &bull; [example/script.js](https://github.com/yuanqing/kontact/blob/master/example/script.js)
 
@@ -57,14 +57,16 @@ kontact(form, function(err, data) {
 
 #### kontact(form, cb)
 
-Listens to the `submit` event on the given `form`, and sends the user input via AJAX for validation.
+Listens to the `submit` event on the given `form`, and sends the user input for validation.
 
-1. `form` is a DOM element. The user input is sent to the URL specified in its `action` attribute. (In our example, `action` is `mail.php`.)
+1. `form` is a DOM element. User input is sent to the URL specified in its `action` attribute. (In our example, `action` is `mail.php`.)
 
 2. Form validation results are returned via the `cb(err, data)` callback. The value of `err` may be one of:
 
   - `0` &mdash; No error in user input.
   - `array` &mdash; There was an error in the user input. Each element in the array corresponds to a form field where there had been an error.
+
+  `data` is an array containing the user input.
 
 ### &bull; [example/mail.php](https://github.com/yuanqing/kontact/blob/master/example/mail.php)
 
@@ -109,7 +111,7 @@ Constructs a new `Kontact` instance.
   - `validate` &mdash; A `callable` for validating user input. It must return `false` if the user input is invalid.
   - `err` &mdash; The error message (a `string`) that is returned if `optional` is `false` but the field was empty, or if the `validate` callaback returned `false` for the given user input.
 
-2. `$cb` is a `callable` that is passed the results of the form validation (namely, the `$err` messages and the user input `$data`).
+2. `$cb` is a `callable` that is passed the results of the form validation (namely, the `$err` messages and the user input `$data`). Do server-side stuff in `$cb`, eg. send email, or add `$data` to a database.
 
 #### Kontact::process($input, $origin)
 
