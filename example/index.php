@@ -11,7 +11,7 @@
       <div><label for="message">Message</label><textarea name="message" id="message"><?php echo @$_GET['data']['message']; ?></textarea></div>
       <div><input type="submit" value="Send" /></div>
     </form>
-    <script src="../js/src/kontact.min.js"></script>
+    <script src="../js/dist/kontact.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

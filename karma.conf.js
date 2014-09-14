@@ -26,7 +26,7 @@ module.exports = function (config) {
       '../node_modules/jasmine-jquery/lib/jasmine-jquery.js',
       '../node_modules/sinon/pkg/sinon-1.10.3.js',
       '../node_modules/sinon/pkg/sinon-ie-1.10.3.js',
-      'dist/kontact.min.js',
+      'src/kontact.min.js',
       'test/spec/kontact.spec.js',
       {pattern: 'test/fixture/fixture.html', watched: false, included: false, served: true}
     ]

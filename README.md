@@ -4,7 +4,7 @@
 
 ## Quick start
 
-1. Clone this repo into a location accessible via [`localhost`](http://localhost/). For example:
+1. Clone this repo into a location accessible via [`localhost`](http://localhost/). For example, do:
 
   ```bash
   $ cd ~/Sites
@@ -12,9 +12,9 @@
   $ cd kontact/example
   ```
 
-  Or simply upload this repo onto a web server that can execute PHP.
+  Or simply upload [this repo](https://github.com/yuanqing/kontact/archive/master.zip) onto a web server that can run PHP.
 
-2. Open [`example/index.php`](https://github.com/yuanqing/kontact/blob/master/example/index.php) on a web browser, and have a go at submitting the contact form.
+2. Open [`example/index.php`](https://github.com/yuanqing/kontact/blob/master/example/index.php) on a web browser, break out your JavaScript console, and have a go at submitting the contact form.
 
 ## Usage
 
@@ -32,12 +32,12 @@ This is the HTML for the contact form itself.
     <div><label for="message">Message</label><textarea name="message" id="message"><?php echo @$_GET['data']['message']; ?></textarea></div>
     <div><input type="submit" value="Send" /></div>
   </form>
-  <script src="../js/src/kontact.min.js"></script>
+  <script src="../js/dist/kontact.min.js"></script>
   <script src="script.js"></script>
 </body>
 ```
 
-1. The `js/src/kontact.min.js` and `script.js` JavaScript files are to be placed just before the closing `body` tag.
+1. The `js/dist/kontact.min.js` and `script.js` JavaScript files are to be placed just before the closing `body` tag.
 
 2. The `action` attribute of the `form` is `mail.php`.
 
@@ -48,6 +48,7 @@ This is the JavaScript that sends the user input via AJAX to `mail.php`.
 ```js
 var form = document.querySelectorAll('.kontact')[0];
 kontact(form, function(err, data) {
+  console.log(err, data);
   if (err) {
     // do stuff with `err`, eg. manipulate the DOM to show error messages
     return;
