@@ -23,7 +23,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('dist', ['clean'], function() {
-  return gulp.src(paths.src)
+  return gulp.src(paths.src, { read: false })
     .pipe(plumber())
     .pipe(browserify({
       insertGlobals: false,
