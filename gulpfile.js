@@ -43,7 +43,7 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('tdd', function() {
+gulp.task('tdd', ['lint', 'test'], function() {
   gulp.watch(paths.src.concat(paths.test), ['lint', 'test']);
 });
 
